@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <title>Job Requirements Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f6fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: 2.5rem;
+      color: #222;
+      letter-spacing: 1px;
+    }
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      width: 100vw;
+      max-width: 1800px;
+      margin-bottom: 32px;
+    }
+    .chart-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+      padding: 24px 24px 8px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 500px;
+      min-height: 500px;
+      max-width: 600px;
+      max-height: 700px;
+      flex: 1 1 500px;
+    }
+    .chart-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2d3a4a;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    .chart {
+      width: 100%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 1200px) {
+      .dashboard {
+        flex-direction: column;
+        align-items: center;
+      }
+      .chart-card {
+        max-width: 95vw;
+      }
+    }
+    #pieChart.chart {
+      height: 500px;
+      min-width: 650px;
+      max-width: 850px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Job Requirements Dashboard</h1>
+  <div class="dashboard">
+    <div class="chart-card">
+      <div class="chart-title">Top 20 Most Common Requirements</div>
+      <div id="barChart" class="chart"></div>
+    </div>
+
+    <div class="chart-card" style="max-width:900px;min-width:700px;">
+      <div class="chart-title">Level Summary Table</div>
+      <div id="levelTable" class="chart"></div>
+    </div>
+
+
+    <div class="chart-card">
+      <div class="chart-title">Experience Years Distribution</div>
+      <div id="histChart" class="chart"></div>
+    </div>
+
+  <div class="chart-card" style="max-width:900px;min-width:700px;">
+    <div class="chart-title">Top 10 Requirements (Pie Chart)</div>
+    <div id="pieChart" class="chart"></div>
+  </div>
+
+  <div class="chart-card" style="max-width:900px;min-width:700px;">
+    <div class="chart-title">Vacancies by Country (Pie Chart)</div>
+    <div id="countryPieChart" class="chart"></div>
+  </div>
+  </div>
+
+  
+
+  <script src="js/bar_chart.js"></script>
+  <script src="js/hist_chart.js"></script>
+  <script src="js/level_table.js"></script>
+  <script src="js/pie_chart.js"></script>
+  <script src="js/country_pie_chart.js"></script>
+  <script>
+    fetch('data/level_table.json')
+      .then(res => res.json())
+      .then(data => {
+        renderLevelTable(data, document.getElementById('levelTable'));
+      });
+
+    fetch('data/requirements_dashboard.json')
+      .then(res => res.json())
+      .then(data => {
+        renderBarChart(data, document.getElementById('barChart'));
+        renderHistChart(data, document.getElementById('histChart'));
+        renderPieChart(data, document.getElementById('pieChart'));
+      });
+  
+    // Load and render country pie chart
+    fetch('data/country_pie.json')
+      .then(res => res.json())
+      .then(data => {
+        renderCountryPieChart(data, document.getElementById('countryPieChart'));
+      });
+  </script>
+</body>
+</html>

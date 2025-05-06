@@ -1,0 +1,32 @@
+[
+  {
+    "level": "Director plus",
+    "most_frequent_requirement": "Bachelors degree in Computer Science or equivalent practical experience",
+    "median_experience_years": 15,
+    "median_n_requirements": 3
+  },
+  {
+    "level": "Advanced",
+    "most_frequent_requirement": "Bachelors degree or equivalent practical experience",
+    "median_experience_years": 6,
+    "median_n_requirements": 4
+  },
+  {
+    "level": "Mid",
+    "most_frequent_requirement": "Bachelors degree or equivalent practical experience",
+    "median_experience_years": 4,
+    "median_n_requirements": 3
+  },
+  {
+    "level": "Early",
+    "most_frequent_requirement": "Bachelors degree or equivalent practical experience",
+    "median_experience_years": 1,
+    "median_n_requirements": 3
+  },
+  {
+    "level": "Intern and apprentice",
+    "most_frequent_requirement": "Experience in one area of computer science eg, Natural Language Understanding, Human Computer Interactions, Computer Vision, Machine Learning, Deep Learning, Algorithmic Foundations of Optimization, Quantum Information Science, Data Science, Software Engineering, or similar areas",
+    "median_experience_years": 0,
+    "median_n_requirements": 2
+  }
+]
