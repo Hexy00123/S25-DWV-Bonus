@@ -127,7 +127,6 @@
         renderPieChart(data, document.getElementById('pieChart'));
       });
   
-    // Load and render country pie chart
     fetch('data/country_pie.json')
       .then(res => res.json())
       .then(data => {
